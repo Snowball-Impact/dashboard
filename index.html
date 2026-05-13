@@ -2,18 +2,129 @@
 <html>
 <head>
     <title>데모 v1.4</title>
-    <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBWSY1GD1P"></script>
     <script>
   window.dataLayer = window.dataLayer || [];
+
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-TBWSY1GD1P');
+
+  function openAIJumugwan(event) {
+    event.preventDefault();
+
+    gtag('event', 'ai_jumugwan_click', {
+        event_category: 'cta',
+        event_label: 'AI 주무관에게 물어보기',
+        location: 'powerbi_dashboard'
+    });
+
+    setTimeout(function() {
+        window.open('https://chatgpt.com/g/g-6a02ab2946b4819188dc40fd3f39d056-gugbi-jigeobhunryeon-ai-jumugwan-gugminnaeilbaeumkadeu', '_blank');
+    }, 150);
+}
+
     </script>
+
+<!-- CSS -->
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Pretendard', sans-serif;
+}
+
+/* AI 버튼 */
+.ai-button {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: 18px;
+    text-decoration: none;
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #2563eb,
+        #06b6d4
+    );
+
+    color: white;
+    box-shadow:
+        0 10px 30px rgba(37,99,235,0.35);
+    backdrop-filter: blur(12px);
+    transition: all 0.25s ease;
+}
+
+.ai-button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 16px 40px rgba(37,99,235,0.45);
+}
+
+/* 아이콘 */
+.ai-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* 텍스트 */
+.ai-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.ai-sub {
+    margin-top: 4px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .ai-button {
+        right: 14px;
+        left: 14px;
+        bottom: 14px;
+        padding: 14px;
+    }
+    .ai-sub {
+        display: none;
+    }
+}
+</style>
+
 </head>
 <body>
+    <!-- AI 주무관 버튼 -->
+    <a href="#"  class="ai-button" onclick="openAIJumugwan(event)">
+        <div class="ai-icon">🤖</div>
+
+        <div class="ai-text">
+            <div class="ai-title">AI 주무관에게 물어보기</div>
+            <div class="ai-sub">
+                과정기획 · 운영질문 · 시장분석
+            </div>
+        </div>
+    </a>
+
+    <!-- 대시보드 -->
     <iframe title="국민내일배움카드훈련과정_대시보드_v1.4" style="height: 100vh; width: 100%; border: none;" src="https://app.powerbi.com/view?r=eyJrIjoiMGZjMzFkZjAtODFmMy00NGMwLTk5YzItMjg0Yjc2ODRkYzczIiwidCI6IjhlY2VlZjA3LTEyZTctNDkwOC05YTY2LTc3MTU5MDYyNzM0NCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+
+
 
 
 </body>
