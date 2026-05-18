@@ -32,14 +32,29 @@ function openSurvey(event) {
 
     gtag('event', 'survey_click', {
         event_category: 'cta',
-        event_label: '설문조사 참여하기',
+        event_label: '설문조사 참여하고 선물받기',
         location: 'powerbi_dashboard'
     });
 
     setTimeout(function() {
-        window.open('https://forms.gle/Yv1wdmLh5wu1abT46', '_blank');
+        window.open('https://forms.gle/ucUMg5bSzugk6ewV6', '_blank');
     }, 150);
 }
+
+function openBugReport(event) {
+    event.preventDefault();
+
+    gtag('event', 'bug_report_click', {
+        event_category: 'cta',
+        event_label: '버그리포트',
+        location: 'powerbi_dashboard'
+    });
+
+    setTimeout(function() {
+        window.open('https://docs.google.com/spreadsheets/d/1dWKX4RsERUq9z4z2E7ba1n0jpUQJCPrmTaZmv4Wl0as/edit?usp=sharing', '_blank');
+    }, 150);
+}
+
 
 function closeButton(id) {
     document.getElementById(id).style.display = 'none';
@@ -61,11 +76,15 @@ body {
 }
 
 .ai-wrap {
-    bottom: 24px;
+    bottom: 232px;
+}
+
+.bug-wrap {
+    bottom: 128px;
 }
 
 .survey-wrap {
-    bottom: 128px;
+    bottom: 24px;
 }
 
 /* 닫기 버튼 */
@@ -124,6 +143,11 @@ body {
     );
 }
 
+/* 버그리포트 버튼 */
+.bug-button {
+    background: linear-gradient(135deg, #111827, #7c3aed, #a855f7);
+}
+
 /* 설문 버튼 */
 .survey-button {
     background: linear-gradient(
@@ -175,6 +199,10 @@ body {
         bottom: 110px;
     }
 
+    .bug-wrap {
+        bottom: 100px;
+    }
+
     .floating-button {
         width: 100%;
         min-height: 76px;
@@ -195,6 +223,19 @@ body {
 </head>
 
 <body>
+
+<!-- 버그리포트 버튼 -->
+<div class="floating-wrap bug-wrap" id="bugWrap">
+    <button class="close-btn" onclick="closeButton('bugWrap')" aria-label="버그리포트 버튼 닫기">×</button>
+
+    <a href="#" class="floating-button bug-button" onclick="openBugReport(event)">
+        <div class="button-icon">🐞</div>
+        <div>
+            <div class="button-title">오류 제보하기</div>
+            <div class="button-sub">오류·불편사항을 알려주세요</div>
+        </div>
+    </a>
+</div>
 
 <!-- 설문조사 버튼 -->
 <div class="floating-wrap survey-wrap" id="surveyWrap">
@@ -229,7 +270,11 @@ body {
 </div>
 
 <!-- 대시보드 -->
-<iframe title="국민내일배움카드훈련과정_대시보드_v1.4.1" style="height: 100vh; width: 100%; border: none;"  src="https://app.powerbi.com/view?r=eyJrIjoiMzkyNGQ1ZjgtMmM5Yi00YzZiLTkxZGYtOGQ4ZTA5YmIxNGEzIiwidCI6IjhlY2VlZjA3LTEyZTctNDkwOC05YTY2LTc3MTU5MDYyNzM0NCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+<iframe title="국민내일배움카드훈련과정_대시보드_v1.4"
+style="height: 100vh; width: 100%; border: none;"
+src="https://app.powerbi.com/view?r=eyJrIjoiMGZjMzFkZjAtODFmMy00NGMwLTk5YzItMjg0Yjc2ODRkYzczIiwidCI6IjhlY2VlZjA3LTEyZTctNDkwOC05YTY2LTc3MTU5MDYyNzM0NCIsImMiOjEwfQ%3D%3D"
+frameborder="0"
+allowFullScreen="true"></iframe>
 
 </body>
 </html>
